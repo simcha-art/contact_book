@@ -59,5 +59,11 @@ def edit_contact(contant: dict, phone_number: str, jf_content, json_file_name)->
     except:
         return False
 
-
-
+def add_email(contact, email_address, jf_content, json_file_name):
+    try:
+        contact["Email_address"] = email_address
+        with open(json_file_name, "w") as jf:
+            json.dump(jf_content, jf)
+        return True
+    except:
+        return False

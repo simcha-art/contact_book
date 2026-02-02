@@ -12,11 +12,12 @@ if __name__ == "__main__":
             exit()
             break
 
-        jf_content = read_json_file("contact_book.json")
+        jf_name = "contact_book.json"
+        jf_content = read_json_file(jf_name)
 
         if choice == "1":
             name, phone_number = user_add_contact()
-            status = add_contact(name, phone_number, "contact_book.json", jf_content)
+            status = add_contact(name, phone_number, jf_name, jf_content)
             display_operation_status(status)
 
         elif choice == "2":
@@ -29,7 +30,7 @@ if __name__ == "__main__":
 
         elif choice == "4":
             name = receive_contact_name()
-            status = delete_contact(name, jf_content, "contact_book.json")
+            status = delete_contact(name, jf_content, jf_name)
             display_operation_status(status)
 
         elif choice == "5":
@@ -38,8 +39,14 @@ if __name__ == "__main__":
             if not contact:
                 display_contact(contact)
                 continue
-            phone_number = receive_contant_number()
-            status = edit_contact(contact, phone_number, jf_content, "contact_book.json")
-            display_operation_status(status)
+            edit_choice = edit_options()
+            if edit_choice == "1":
+                phone_number = receive_contact_number()
+                status = edit_contact(contact, phone_number, jf_content, jf_name)
+                display_operation_status(status)
+            elif edit_choice == "2":
+                email_address = receive_contact_email()
+                status = add_email(contact, email_address, jf_content, jf_name)
+                display_operation_status(status)
             display_contact(contact)
 
