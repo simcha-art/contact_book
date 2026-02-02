@@ -7,6 +7,13 @@ def display_menu():
           "5. Edit contact\n"
           "6. Exit")
 
+def display_message(message):
+    print()
+    print("=" * len(message) if len(message) < 30 else "=" * 30)
+    print(message)
+    print("=" * len(message) if len(message) < 30 else "=" * 30)
+    print()
+
 
 def user_choice():
     choose = input("choose option: ")
@@ -17,28 +24,30 @@ def user_add_contact():
     phone_number = input("please enter contact's phone_number: ")
     return name, phone_number
 
-def contact_name():
+def receive_contact_name():
     name = input("please enter contact's name: ")
     return name
 
 def exit():
-    print("See yot next time :)")
+    message = "See yot next time :)"
+    display_message(message)
 
 def display_all_contacts(json_file_content):
-    print()
-    print("==========================")
+    message = ""
     for contant in json_file_content:
-        print(f"{contant["name"]}: {contant["phone_number"]}")
-    print("==========================")
-    print()
+        message += f"{contant["name"]}: {contant["phone_number"]}\n"
+    message = message[:-2]
+    display_message(message)
 
 def display_contact(contact: dict):
     if contact:
         message = f"{contact["name"]}: {contact["phone_number"]}"
     else:
         message = "Contact didn't found"
-    print()
-    print("=" * len(message))
-    print(message)
-    print("=" * len(message))
-    print()
+    display_message(message)
+
+def display_operation_status(status: bool):
+    message = "operation succeeded!" if status else "oops, something went rong"
+    display_message(message)
+
+

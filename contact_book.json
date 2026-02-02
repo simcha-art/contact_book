@@ -1,10 +1,1 @@
-[
-    {
-        "name": "simcha copperman",
-        "phone_number": "0548473666"
-    },
-  {
-        "name": "Meir Holzer",
-        "phone_number": "0532647859"
-    }
-]
+[{"name": "Simcha Copperman", "phone_number": "0548473666"}, {"name": "Avraham Lider", "phone_number": "0555569308"}]

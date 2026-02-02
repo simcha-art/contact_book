@@ -31,3 +31,17 @@ def find_contact(name: str, json_file_content: dict|list):
         if contact["name"] == name:
             return contact
     return False
+
+def delete_contact(name: str, jf_content: list[dict], json_file_name):
+    try:
+        for contant in jf_content:
+            if contant["name"] == name:
+                jf_content.remove(contant)
+                with open(json_file_name, "w") as jfile:
+                    json.dump(jf_content, jfile)
+                    return True
+        return False
+    except Exception as e:
+        print(f"Error: {e}")
+
+

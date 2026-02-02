@@ -16,15 +16,19 @@ if __name__ == "__main__":
 
         if choice == "1":
             name, phone_number = user_add_contact()
-            if add_contact(name, phone_number, "contact_book.json", jf_content):
-                print("Operation succeeded!")
-            else:
-                print("Oops, something went wrong!")
+            status = add_contact(name, phone_number, "contact_book.json", jf_content)
+            display_operation_status(status)
 
         elif choice == "2":
             display_all_contacts(jf_content)
 
         elif choice == "3":
-            name = contact_name()
+            name = receive_contact_name()
             contact = find_contact(name, jf_content)
             display_contact(contact)
+
+        elif choice == "4":
+            name = receive_contact_name()
+            status = delete_contact(name, jf_content, "contact_book.json")
+            display_operation_status(status)
+
