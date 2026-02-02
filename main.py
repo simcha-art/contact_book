@@ -32,3 +32,14 @@ if __name__ == "__main__":
             status = delete_contact(name, jf_content, "contact_book.json")
             display_operation_status(status)
 
+        elif choice == "5":
+            name = receive_contact_name()
+            contact = find_contact(name, jf_content)
+            if not contact:
+                display_contact(contact)
+                continue
+            phone_number = receive_contant_number()
+            status = edit_contact(contact, phone_number, jf_content, "contact_book.json")
+            display_operation_status(status)
+            display_contact(contact)
+

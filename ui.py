@@ -24,6 +24,10 @@ def user_add_contact():
     phone_number = input("please enter contact's phone_number: ")
     return name, phone_number
 
+def receive_contant_number():
+    phone_number = input("please enter contant's phone number: ")
+    return phone_number
+
 def receive_contact_name():
     name = input("please enter contact's name: ")
     return name
@@ -35,7 +39,7 @@ def exit():
 def display_all_contacts(json_file_content):
     message = ""
     for contant in json_file_content:
-        message += f"{contant["name"]}: {contant["phone_number"]}\n"
+        message += f"{contant["name"]}: {contant["phone_number"]} {(" ," + contant["Email_address"]) if contant["Email_address"] else ""}\n"
     message = message[:-2]
     display_message(message)
 

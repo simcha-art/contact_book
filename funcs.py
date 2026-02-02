@@ -1,5 +1,8 @@
 import json
 
+from contact_book.ui import display_contact
+
+
 def read_json_file(json_file):
     try:
         with open(json_file) as jf:
@@ -15,9 +18,9 @@ def read_json_file(json_file):
 
 
 
-def add_contact(name: str, phone_number: str, json_file_name: str, json_file_content: dict|list):
+def add_contact(name: str, phone_number: str, json_file_name: str, json_file_content: dict|list, Email_address = None):
     try:
-        new_contact = {"name": name, "phone_number": phone_number}
+        new_contact = {"name": name, "phone_number": phone_number, "Email_address": Email_address}
         json_file_content.append(new_contact)
         with open(json_file_name, "w") as jf:
             json.dump(json_file_content, jf, indent=4)
@@ -43,5 +46,18 @@ def delete_contact(name: str, jf_content: list[dict], json_file_name):
         return False
     except Exception as e:
         print(f"Error: {e}")
+
+
+
+
+def edit_contact(contant: dict, phone_number: str, jf_content, json_file_name)-> bool:
+    try:
+        contant["phone_number"] = phone_number
+        with open(json_file_name, "w") as jf:
+            json.dump(jf_content, jf)
+        return True
+    except:
+        return False
+
 
 
