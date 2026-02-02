@@ -23,3 +23,8 @@ if __name__ == "__main__":
 
         elif choice == "2":
             display_all_contacts(jf_content)
+
+        elif choice == "3":
+            name = contact_name()
+            contact = find_contact(name, jf_content)
+            display_contact(contact)

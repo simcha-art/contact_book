@@ -26,4 +26,8 @@ def add_contact(name: str, phone_number: str, json_file_name: str, json_file_con
         return False
 
 
-
+def find_contact(name: str, json_file_content: dict|list):
+    for contact in json_file_content:
+        if contact["name"] == name:
+            return contact
+    return False

@@ -17,6 +17,10 @@ def user_add_contact():
     phone_number = input("please enter contact's phone_number: ")
     return name, phone_number
 
+def contact_name():
+    name = input("please enter contact's name: ")
+    return name
+
 def exit():
     print("See yot next time :)")
 
@@ -26,4 +30,15 @@ def display_all_contacts(json_file_content):
     for contant in json_file_content:
         print(f"{contant["name"]}: {contant["phone_number"]}")
     print("==========================")
+    print()
+
+def display_contact(contact: dict):
+    if contact:
+        message = f"{contact["name"]}: {contact["phone_number"]}"
+    else:
+        message = "Contact didn't found"
+    print()
+    print("=" * len(message))
+    print(message)
+    print("=" * len(message))
     print()
